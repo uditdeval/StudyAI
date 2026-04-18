@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudyAI — Intelligent Study Assistant</title>
+
+    <!-- Bootstrap 5 CSS via CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+
+    <!-- Google Fonts: Playfair Display + Source Serif 4 + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom Stylesheet -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="100">
+
+    <!-- Decorative ambient background orbs -->
+    <div class="ambient-orbs" aria-hidden="true">
+      <span class="orb orb-1"></span>
+      <span class="orb orb-2"></span>
+      <span class="orb orb-3"></span>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="mainNavbar" class="navbar navbar-expand-lg fixed-top site-navbar">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#hero">
+          <span class="brand-mark">
+            <i class="bi bi-book-half"></i>
+          </span>
+          <span class="brand-text">
+            <span class="brand-name">StudyAI</span>
+            <span class="brand-tagline">Intelligent Study Assistant</span>
+          </span>
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#topics">Topics</a></li>
+            <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+            <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+            <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-accent" href="#newsletter">Get Started</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="hero-section">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7 reveal">
+            <span class="eyebrow">
+              <i class="bi bi-stars"></i> AI-powered learning companion
+            </span>
+            <h1 class="hero-title">
+              Master any subject with a <em>thoughtful</em> study companion.
+            </h1>
+            <p class="hero-lead">
+              StudyAI breaks down complex topics into clear explanations and bite-sized
+              takeaways — from networking fundamentals to data structures, calculus,
+              and beyond.
+            </p>
+
+            <!-- Search box -->
+            <form class="search-bar mt-4" onsubmit="handleSearchSubmit(event)">
+              <i class="bi bi-search search-icon"></i>
+              <input
+                type="text"
+                id="searchInput"
+                class="form-control search-input"
+                placeholder="Try: OSI model, recursion, photosynthesis…"
+                aria-label="Search topics"
+              />
+              <button type="submit" class="btn btn-accent search-btn">Ask</button>
+            </form>
+
+            <div class="hero-tags mt-3">
+              <span class="tag-chip" onclick="quickSearch('OSI Model')">OSI Model</span>
+              <span class="tag-chip" onclick="quickSearch('Recursion')">Recursion</span>
+              <span class="tag-chip" onclick="quickSearch('Photosynthesis')">Photosynthesis</span>
+              <span class="tag-chip" onclick="quickSearch('Newton Laws')">Newton's Laws</span>
+            </div>
+
+            <!-- Result panel populated by JS -->
+            <div id="resultPanel" class="result-panel mt-4" hidden></div>
+          </div>
+
+          <div class="col-lg-5 reveal">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+                <span class="hero-card-title">study-session.md</span>
+              </div>
+              <div class="hero-card-body">
+                <p class="code-line"><span class="code-key">topic:</span> OSI Model</p>
+                <p class="code-line"><span class="code-key">layers:</span> 7</p>
+                <p class="code-line"><span class="code-key">status:</span>
+                  <span class="code-ok">understood ✓</span>
+                </p>
+                <hr class="code-sep" />
+                <p class="code-comment"># Key insight</p>
+                <p class="code-line code-quote">
+                  "Each layer talks only to the layer above and below it."
+                </p>
+                <div class="progress-row">
+                  <span class="progress-label">Mastery</span>
+                  <div class="progress hero-progress">
+                    <div class="progress-bar" style="width: 78%"></div>
+                  </div>
+                  <span class="progress-value">78%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section section-pad">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="eyebrow"><i class="bi bi-grid-3x3-gap"></i> What you get</span>
+          <h2 class="section-title">Everything you need to study smarter</h2>
+          <p class="section-lead">
+            A focused toolkit designed around the way real students learn — clear,
+            calm, and free from distraction.
+          </p>
+        </div>
+
+        <div class="row g-4 mt-4">
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-lightbulb"></i></div>
+              <h3>Instant explanations</h3>
+              <p>
+                Type any topic and get a clear paragraph plus the key bullet points —
+                without scrolling through endless articles.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-collection"></i></div>
+              <h3>Curated knowledge base</h3>
+              <p>
+                Hand-picked topics across networking, programming, science, and math —
+                each written for clarity, not buzzwords.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-bookmark-star"></i></div>
+              <h3>Bite-sized takeaways</h3>
+              <p>
+                Every topic ends with 3–4 actionable points so you can revise
+                quickly before an exam or interview.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-search"></i></div>
+              <h3>Smart fuzzy search</h3>
+              <p>
+                Misspell a term? No problem. Keyword matching finds the closest
+                topic so you never hit a dead end.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-moon-stars"></i></div>
+              <h3>Calm, focused design</h3>
+              <p>
+                A dark editorial aesthetic that's easy on the eyes during long
+                late-night study sessions.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="feature-card">
+              <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>
+              <h3>Fast and lightweight</h3>
+              <p>
+                No bloated frameworks. Just clean HTML, CSS, and JS that loads
+                instantly on any device.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section section-pad">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 reveal">
+            <div class="about-visual">
+              <div class="about-card about-card-1">
+                <i class="bi bi-mortarboard"></i>
+                <span>10K+ Students</span>
+              </div>
+              <div class="about-card about-card-2">
+                <i class="bi bi-journal-text"></i>
+                <span>50+ Topics</span>
+              </div>
+              <div class="about-card about-card-3">
+                <i class="bi bi-stars"></i>
+                <span>Always Free</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 reveal">
+            <span class="eyebrow"><i class="bi bi-info-circle"></i> About StudyAI</span>
+            <h2 class="section-title text-start">
+              Built by students, <em>for</em> students.
+            </h2>
+            <p class="section-lead text-start">
+              StudyAI started as a side project to help one frustrated CS student
+              survive a networking exam. It quickly grew into a thoughtful
+              collection of explanations covering the topics that actually matter.
+            </p>
+            <ul class="about-list">
+              <li><i class="bi bi-check2-circle"></i> No ads, no trackers, no fluff</li>
+              <li><i class="bi bi-check2-circle"></i> Written in plain English</li>
+              <li><i class="bi bi-check2-circle"></i> Updated with new topics weekly</li>
+              <li><i class="bi bi-check2-circle"></i> Open to community contributions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Topics / Cards Gallery Section -->
+    <section id="topics" class="topics-section section-pad">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="eyebrow"><i class="bi bi-collection-fill"></i> Browse topics</span>
+          <h2 class="section-title">A growing library of subjects</h2>
+          <p class="section-lead">
+            Click any card to load its explanation in the search panel above.
+          </p>
+        </div>
+
+        <div id="topicsGrid" class="row g-4 mt-3">
+          <!-- Topic cards injected by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section id="stats" class="stats-section section-pad">
+      <div class="container">
+        <div class="row g-4 text-center">
+          <div class="col-6 col-md-3 reveal">
+            <div class="stat-block">
+              <div class="stat-number" data-target="10500">0</div>
+              <div class="stat-label">Active learners</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 reveal">
+            <div class="stat-block">
+              <div class="stat-number" data-target="52">0</div>
+              <div class="stat-label">Curated topics</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 reveal">
+            <div class="stat-block">
+              <div class="stat-number" data-target="98">0</div>
+              <div class="stat-label">Satisfaction %</div>
+            </div>
+          </div>
+          <div class="col-6 col-md-3 reveal">
+            <div class="stat-block">
+              <div class="stat-number" data-target="24">0</div>
+              <div class="stat-label">Hours saved / week</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section section-pad">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="eyebrow"><i class="bi bi-chat-quote"></i> Reviews</span>
+          <h2 class="section-title">What students are saying</h2>
+        </div>
+
+        <div class="row g-4 mt-3">
+          <div class="col-md-4 reveal">
+            <div class="testimonial-card">
+              <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p class="testimonial-text">
+                "Finally, a study tool that doesn't feel like another social
+                media app. The explanations are exactly what I needed before my
+                networking final."
+              </p>
+              <div class="testimonial-author">
+                <div class="avatar">M</div>
+                <div>
+                  <strong>Maya Patel</strong>
+                  <span>CS Student, MIT</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="testimonial-card">
+              <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p class="testimonial-text">
+                "I love the bullet-point takeaways. They're perfect for last-minute
+                revision the night before an exam."
+              </p>
+              <div class="testimonial-author">
+                <div class="avatar">J</div>
+                <div>
+                  <strong>Jordan Lee</strong>
+                  <span>Engineering, Stanford</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 reveal">
+            <div class="testimonial-card">
+              <div class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+              <p class="testimonial-text">
+                "The dark theme is gorgeous and the search is fast. It's become
+                my default reference for quick concept refreshers."
+              </p>
+              <div class="testimonial-author">
+                <div class="avatar">S</div>
+                <div>
+                  <strong>Sara Kim</strong>
+                  <span>Self-taught Developer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section id="faq" class="faq-section section-pad">
+      <div class="container">
+        <div class="section-header text-center reveal">
+          <span class="eyebrow"><i class="bi bi-question-circle"></i> FAQ</span>
+          <h2 class="section-title">Frequently asked questions</h2>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-8">
+            <div class="accordion custom-accordion" id="faqAccordion">
+
+              <div class="accordion-item reveal">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                    Is StudyAI really free to use?
+                  </button>
+                </h2>
+                <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Yes! StudyAI is completely free with no ads, no signup required,
+                    and no hidden paywalls. We believe quality study resources should
+                    be available to everyone.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item reveal">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                    What subjects does it cover?
+                  </button>
+                </h2>
+                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Currently we focus on computer science, networking, mathematics,
+                    physics, and biology fundamentals. New topics are added every week
+                    based on student requests.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item reveal">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                    Can I suggest a new topic?
+                  </button>
+                </h2>
+                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    Absolutely. Use the newsletter form below to drop us a note —
+                    we read every suggestion and prioritize the most-requested topics.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item reveal">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                    Does it work offline?
+                  </button>
+                </h2>
+                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    The site is lightweight enough that once loaded, you can keep
+                    using it during a brief connection drop. A full offline mode
+                    is on our roadmap.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item reveal">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                    Is my search history stored?
+                  </button>
+                </h2>
+                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body">
+                    No. StudyAI doesn't track or store your searches. Everything
+                    runs locally in your browser.
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="newsletter-section section-pad">
+      <div class="container">
+        <div class="newsletter-card reveal">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-7">
+              <span class="eyebrow"><i class="bi bi-envelope-paper"></i> Stay in the loop</span>
+              <h2 class="newsletter-title">
+                Get new topics delivered weekly.
+              </h2>
+              <p class="newsletter-lead">
+                One short email every Sunday with the freshest explanations,
+                study tips, and exam prep guides. Unsubscribe anytime.
+              </p>
+            </div>
+            <div class="col-lg-5">
+              <form class="newsletter-form" onsubmit="handleNewsletterSubmit(event)">
+                <input
+                  type="email"
+                  id="newsletterEmail"
+                  class="form-control"
+                  placeholder="your@email.com"
+                  required
+                />
+                <button type="submit" class="btn btn-accent w-100 mt-3">
+                  Subscribe <i class="bi bi-arrow-right"></i>
+                </button>
+                <p id="newsletterMsg" class="newsletter-msg" hidden></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+<!-- Footer -->
+<footer class="site-footer">
+  
+  <!-- Animated Glow -->
+  <div class="footer-glow"></div>
+
+  <div class="container">
+    <div class="row g-4">
+
+      <!-- Brand -->
+      <div class="col-md-5">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <span class="brand-mark"><i class="bi bi-book-half"></i></span>
+          <span class="brand-name">StudyAI</span>
+        </div>
+        <p class="footer-text">
+          An intelligent study companion built to make learning calmer,
+          clearer, and a little more delightful.
+        </p>
+      </div>
+
+      <!-- Product -->
+      <div class="col-6 col-md-2">
+        <h5 class="footer-title">Product</h5>
+        <ul class="footer-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="col-6 col-md-2">
+        <h5 class="footer-title">Company</h5>
+        <ul class="footer-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#newsletter">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div class="col-md-3">
+        <h5 class="footer-title">Follow</h5>
+        <div class="social-row">
+
+          <a href="https://instagram.com/uditdeval" target="_blank">
+            <i class="bi bi-instagram"></i>
+          </a>
+
+          <a href="https://github.com/uditdeval" target="_blank">
+            <i class="bi bi-github"></i>
+          </a>
+
+          <a href="#" target="_blank">
+            <i class="bi bi-youtube"></i>
+          </a>
+
+          <a href="https://linkedin.com/in/uditdeval-19v/" target="_blank">
+            <i class="bi bi-linkedin"></i>
+          </a>
+
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <!-- Bottom -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      
+      <p class="footer-copy mb-0">© 2026 StudyAI. All rights reserved.</p>
+      
+      <p class="footer-copy mb-0">
+        Developed by 
+        <a href="https://uditdeval.github.io" target="_blank" class="dev-link">
+          Udit Deval
+        </a> 🚀
+      </p>
+
+    </div>
+  </div>
+</footer>
+
+    <!-- Bootstrap 5 JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>

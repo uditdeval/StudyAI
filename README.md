@@ -1,3 +1,4 @@
+# StudyAI — Intelligent Study Assistant
 StudyAI is a lightweight AI-inspired study assistant built using HTML, CSS, and JavaScript. 
 
 It allows users to search for topics and instantly get clear explanations along with key takeaways. The platform is designed to help students quickly revise concepts without going through lengthy articles.

@@ -43,7 +43,12 @@ Ideal for students who want:
 
 ## 📷 Preview
 
-*Add screenshots of your website here (optional but recommended)*
+<img width="1917" height="971" alt="image" src="https://github.com/user-attachments/assets/9c9f7582-8beb-4f3b-a8a8-0b2192f87b46" />
+<img width="1919" height="970" alt="image" src="https://github.com/user-attachments/assets/78fefc57-6049-4a13-8efb-d521beb3be58" />
+<img width="1905" height="969" alt="image" src="https://github.com/user-attachments/assets/00d46a78-c27c-44f3-842e-d7e14d24ff94" />
+<img width="1918" height="975" alt="image" src="https://github.com/user-attachments/assets/e7700383-c646-48f4-b57c-da5a2674c332" />
+<img width="1916" height="951" alt="image" src="https://github.com/user-attachments/assets/6e30f7c2-f8c9-4d64-abf6-527d81bcd9e0" />
+
 
 ---
 

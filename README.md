@@ -1,6 +1,6 @@
 # 🚀 StudyAI — Intelligent Study Assistant
 
-🌐 **Live Demo:** https://uditdeval.github.io/studyai/
+🌐 **Live Demo:** https://uditdeval.github.io/StudyAI/
 
 ---
 
